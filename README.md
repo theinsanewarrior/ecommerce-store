@@ -8,7 +8,7 @@ This project is an e-commerce application built with Spring Boot. Customers can 
 - JWT Authentication for secure login.
 - Search and sort products.
 - View detailed product information.
-- Add products to the cart and purchase.
+- Buy products.
 
 ### Admin
 - Manage product inventory (add, update, delete products).
