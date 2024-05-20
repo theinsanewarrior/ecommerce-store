@@ -1,0 +1,47 @@
+<html  xmlns:th="http://www.thymeleaf.org">
+<body class='bgi'>
+<div th:insert="/manager/top"></div>
+<div class='container'>
+ <div class='card mx-auto col-md-10'>
+  <div class='card-body'>
+   <form action="save" method="post">
+     <div class='row form-group'>
+      <div class='col-md-6'>
+       	<label for="name">Enter product name</label><span> *</span>
+       	<input type='text' name="name" id='name' class='form-control' required/>
+      </div>
+      <div class='col-md-6'>
+      	<label for="brand">Enter brand name</label><span> *</span>
+       	<input type='text' name="brand" id='brand' class='form-control' required/>
+     </div>
+    </div>
+    <div class='row form-group'>
+      <div class='col-md-6'>
+       	<label for="name">Select category</label><span> *</span>
+       	<select name="category" id='category' class='form-control' required>
+       	 <option th:each="cat:${clist}" th:value="${cat.cat_id}" th:text="${cat.category}"></option>
+       	</select>
+      </div>
+    </div>
+    <div class='row form-group'>
+     <div class='col-md-6'>
+       	<label for="stock">Enter units of stock</label><span> *</span>
+       	<input type='text'  name="stock" id='stock' class='form-control' required/>
+      </div>
+      <div class='col-md-6'>
+      	<label for="price">Enter price</label><span> *</span>
+       	<input type='text' name="price" id='price' class='form-control' required/>
+     </div>
+    </div>
+    <div class='row form-group'>
+     <div class='col-md-10'>
+       	<button class='btr'>Add Product</button>
+       	<input type='button' value='cancel' class='btr' style='background-color:orange' onclick='history.back()'>
+     </div>
+    </div>
+   </form>
+  </div>
+ </div>
+</div>
+</body>
+</html>

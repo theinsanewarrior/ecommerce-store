@@ -1,0 +1,30 @@
+<html  xmlns:th="http://www.thymeleaf.org">
+<div th:insert="/user/top"></div>
+<body class='bgi'>
+  <table border='1' class='tad' style='width:50%'>
+   <tr>
+    <th class='tatd hp' align="left">Product Id</th>
+    <td class='tatd dp' th:text="${product.pid}"></td>
+   </tr>
+   <tr>
+    <th class='tatd hp' align="left">Product Name</th>
+    <td class='tatd dp' th:text="${product.name}"></td>
+   </tr>
+   <tr>
+    <th class='tatd hp' align="left">Product Brand</th>
+    <td class='tatd dp' th:text="${product.brand}"></td>
+   </tr>
+   <tr>
+    <th class='tatd hp' align="left">Product Category</th>
+    <td class='tatd dp' th:text="${product.category}"></td>
+   </tr>
+   <tr>
+    <th class='tatd hp' align="left">Product Price</th>
+    <td class='tatd dp' th:text="${'&#8377;'+product.price}"></td>
+   </tr>
+  </table>
+  <div class='dvv'>
+   <button class='btr' onclick='history.back()' style='background-color:orange'>Go Back</button>
+  </div>
+</body>
+</html>

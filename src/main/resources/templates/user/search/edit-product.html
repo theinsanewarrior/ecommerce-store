@@ -1,0 +1,55 @@
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+<link href='../../CSS/style.css' rel='stylesheet'>
+  <link href='../../CSS/bootstrap.min.css' rel='stylesheet'>
+</head>
+<body class='bgi'>
+ <div th:insert="/user/top"></div>
+ <div class='container'>
+ <div class='card mx-auto col-md-10'>
+  <div class='card-body'>
+   <form action="editsave" method="post">
+   <div class='row form-group'>
+      <div class='col-md-10'>
+       	<label for="id">Product id</label><span> *</span>
+       	<input type='text' readonly="readonly" name="pid" id='pid' th:value="${product.pid}" class='form-control' required/>
+      </div>
+    </div>
+   <div class='row form-group'>
+      <div class='col-md-6'>
+       	<label for="name">Edit product name</label><span> *</span>
+       	<input type='text' name="name" id='name' th:value="${product.name}" class='form-control' required/>
+      </div>
+      <div class='col-md-6'>
+      	<label for="brand">Edit brand name</label><span> *</span>
+       	<input type='text' name="brand" id='brand' th:value="${product.brand}" class='form-control' required/>
+     </div>
+    </div>
+    <div class='row form-group'>
+      <div class='col-md-6'>
+       	<label for="category">Edit category id</label><span> *</span>
+       	<input type='text' name="category" id='category' th:value="${product.category}" class='form-control' required/>
+      </div>
+    </div>
+    <div class='row form-group'>
+     <div class='col-md-6'>
+       	<label for="stock">Edit units of stock</label><span> *</span>
+       	<input type='number' min="1"  name="stock" id='stock' th:value="${product.stock}" class='form-control' required/>
+      </div>
+      <div class='col-md-6'>
+      	<label for="price">Edit price</label>
+       	<input type='text' name="price" id='price' th:value="${product.price}" class='form-control' required/>
+     </div>
+    </div>
+    <div class='row form-group'>
+     <div class='col-md-10'>
+       	<button class='btr'>Update</button>
+       	<input type='button' value='cancel' class='btr' style='background-color:orange' onclick='history.back()'>
+     </div>
+    </div>
+   </form>
+  </div>
+ </div>
+</div>
+</body>
+</html>

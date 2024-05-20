@@ -1,0 +1,51 @@
+<html   xmlns:th="http://www.thymeleaf.org">
+ <head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+ </head>
+ <div th:insert="/manager/top"></div>
+ <body class='bgi'>
+  <form>
+  <div style='text-align:center'>
+   <label class='la' style='color:green;font-weight:bold'>Product list by&nbsp;</label>
+   <label class='la' style='color:green;font-weight:bold' th:text="${by}"></label>
+  </div> 
+  <div class='container'>
+    <div class='card'>
+      <div class='card-body'>
+      <div class='dvv' th:if="${list.empty}">
+   		<label class='lah' style='color:red'>There is no product in store</label>
+      </div>
+      <div th:if="${!list.empty}" class='scrollit'>
+        <table class='table laa'>
+   		 <thead>
+    		<tr><th>Product</th><th>Name</th><th>Brand</th><th>Category</th>
+    		<th>Copies</th><th>Price</th><th>Stock</th>
+    		<th style='color:magenta'>Action</th></tr>
+         </thead>
+         <tbody>
+    		<tr th:each="product:${list}">
+     			<td th:text="${product.pid}"></td>
+     			<td th:text="${product.name}"></td>
+     			<td th:text="${product.brand}"></td>
+     			<td class='tdr'><a th:href="@{/manager/category/details(cid=${product.category})}" th:text="${product.category}"></a></td>
+          			<td th:text="${product.stock}"></td>
+     			<td th:text="${product.price}"></td>
+     			<td th:if="${product.stock>0}" style='color:green'>In Stock</td>
+     			<td th:if="${product.stock==0}" style='color:red'>Out of Stock</td>
+     			<td>
+      				<a th:href="@{/manager/product/edit(pid=${product.pid})}">Edit |</a>
+      				<a th:href="@{/searchby/product/remove(pid=${product.pid})}" onclick='return confirm("Are you sure to remove?")'>Remove</a> 
+     			</td>
+    		</tr>
+   		 </tbody>
+  	   </table>
+     </div>
+     <div class='dvv'>
+     	<a class='btl' href='/manager/searchproducts' style='background-color:orange'>Back</a>
+  	 </div>
+    </div>
+   </div>
+  </div>
+  </form>
+ </body>
+ </html>

@@ -1,0 +1,53 @@
+<html xmlns:th="http://www.thymeleaf.org">
+ <head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+ </head>
+ <div th:insert="/user/top"></div>
+ <body class='bgi'>
+  <form action="/branch/productlist">
+  <div class='container'>
+    <div class='card'>
+      <div class='card-header'>
+        <div th:if="${!list.empty}" class='card-header'>
+        <div th:insert="/user/purchase/pagination"></div>
+        </div>
+      </div>
+      <div class='card-body'>
+      <div class='dvv' th:if="${list.empty}">
+   		<label class='lah' style='color:red'>There is no product in store</label>
+      </div>
+      <div th:if="${!list.empty}">
+        <table class='table laa'>
+   		  <thead>
+    		<tr><th>Product</th><th>Name</th><th>Brand</th><th>Category</th>
+    		<th>Copies</th><th>Price</th><th>Stock</th>
+    		<th style='color:magenta'>Order</th><th style='color:magenta'>Add</th></tr>
+         </thead>
+         <tbody>
+    		<tr th:each="product:${list}">
+     			<td th:text="${product.pid}"></td>
+     			<td th:text="${product.name}"></td>
+     			<td th:text="${product.brand}"></td>
+     			<td class='tdr'><a th:href="@{/manager/category/details(cid=${product.category})}" th:text="${product.category}"></a></td>
+          		<td th:text="${product.stock}"></td>
+     			<td th:text="${'&#8377;'+product.price}"></td>
+     			<td th:if="${product.stock>0}" style='color:green'>In Stock</td>
+     			<td th:if="${product.stock==0}" style='color:red'>Out of Stock</td>
+     			<td th:if="${product.stock>0}"><a th:href="@{/purchase/buyproduct(pid=${product.pid})}">Order Now</a></td>
+      			<td th:if="${product.stock>0}"  align="center">
+      				<a th:href="@{/cart/add(pid=${product.pid})}" title='Click to add into cart'><i class='fa fa-shopping-cart'></i></a>
+      			</td>
+      			<td colspan="2" align="center" label th:if="${product.copies==0}"><label>Coming soon</label></td>
+    		</tr>
+   		 </tbody>
+  	   </table>
+     </div>
+    </div>
+   </div>
+   <div class='dvv'>
+    <a class='btl' href='/user/home' style='background-color:orange'>Home</a>
+   </div>
+  </div>
+  </form>
+ </body>
+ </html>
